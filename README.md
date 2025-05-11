@@ -28,10 +28,10 @@ If you know this game, it almost requires having a group. Average objective can 
 - Difficult: Challenges require completing hard objectives or entire levels with limited resources or conditions.
 - Time-Consuming: Extremely long level completions, such as Primary+Secondary+Overload completions in a single level. Possibility of rolling ANY GTFO rundown level.
 ### Rimworld | [Objectives](https://github.com/ManNamedGarbo/KeymastersKeepGames/blob/c2c9ec18a54f91379677230ae5d4dbb7024f187f/games/rimworld_game.py#L36)
-- Lot of things involving creating gear of a specific material, handling specific raids, or getting pawns in specific states. Extremely grindy, you've been warned!
+Lot of things involving creating gear of a specific material, handling specific raids, or getting pawns in specific states. Extremely grindy, you've been warned!
 - Difficult: It's Rimworld. Most objectives are considered Difficult. I recommend not playing this with Difficult disabled at all.
 - Time-Consuming: Getting specific moodlets on Pawns, Crafting extremely specific (and often times useless) items, or reaching major colony milestones and researches.
 ### Salt and Sacrifice | [Objectives](https://github.com/ManNamedGarbo/KeymastersKeepGames/blob/c2c9ec18a54f91379677230ae5d4dbb7024f187f/games/salt_and_sacrifice_game.py#L44)
-- Essentially a boss rush. Intended to be played with knowledge of all warp runes.
+Essentially a boss rush. Intended to be played with knowledge of all warp runes.
 - Difficult: Limited weapon and magic usage, No item challenges, or deathless Boss Rush gauntlets. Not as difficult as it seems if you are comfortable with the game as a whole.
 - Time-Consuming: Lots of running around, hunting multiple of the same type of mage, or looking for item drops. Needs an update altogether honestly as it's not that fun to enable and lacks proper depth.
