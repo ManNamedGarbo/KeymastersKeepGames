@@ -179,7 +179,7 @@ class BackpackBattlesGame(Game):
                 weight=1,
             ),           
             GameObjectiveTemplate(
-                label="Truly Crafty - Have at least 3 unique crafted items in your backpack at once (Non-Potion)",
+                label="Truly Crafty - Have at least 3 unique crafted non-potion items in your backpack at once",
                 data=dict(),
                 is_time_consuming=False,
                 is_difficult=False,
@@ -228,7 +228,7 @@ class BackpackBattlesGame(Game):
                 weight=1,
             ),   
             GameObjectiveTemplate(
-                label="I'm Just Better! - Win 10 rounds against the same class (Across any number of Matches)",
+                label="I'm Just Better! - Win 10 rounds against someone playing the same class as you(Across any number of Matches)",
                 data=dict(),
                 is_time_consuming=False,
                 is_difficult=False,
@@ -315,7 +315,7 @@ class BackpackBattlesGame(Game):
                 weight=1,
             ), 
             GameObjectiveTemplate(
-                label="As a Berserker, craft two of the following: RECIPES",
+                label="As a Berserker, craft any two of the following: RECIPES",
                 data={
                     "RECIPES": (self.berserkerrecipe, 3)
                 },
@@ -324,7 +324,7 @@ class BackpackBattlesGame(Game):
                 weight=3,
             ),
             GameObjectiveTemplate(
-                label="As a Reaper, craft two of the following: RECIPES",
+                label="As a Reaper, craft any two of the following: RECIPES",
                 data={
                     "RECIPES": (self.reaperrecipe, 3)
                 },
@@ -333,7 +333,7 @@ class BackpackBattlesGame(Game):
                 weight=3,
             ),
             GameObjectiveTemplate(
-                label="As a Pyromancer, craft two of the following: RECIPES",
+                label="As a Pyromancer, craft any two of the following: RECIPES",
                 data={
                     "RECIPES": (self.pyromancerrecipe, 3)
                 },
@@ -342,9 +342,27 @@ class BackpackBattlesGame(Game):
                 weight=3,
             ),
             GameObjectiveTemplate(
-                label="As a Ranger, craft two of the following: RECIPES",
+                label="As a Ranger, craft any two of the following: RECIPES",
                 data={
                     "RECIPES": (self.rangerrecipe, 3)
+                },
+                is_time_consuming=False,
+                is_difficult=False,
+                weight=3,
+            ),
+            GameObjectiveTemplate(
+                label="As an Adventurer, craft any two of the following: RECIPES",
+                data={
+                    "RECIPES": (self.adventurerrecipe, 3)
+                },
+                is_time_consuming=False,
+                is_difficult=False,
+                weight=3,
+            ),
+            GameObjectiveTemplate(
+                label="As a Mage, craft any two of the following: RECIPES",
+                data={
+                    "RECIPES": (self.magerecipe, 3)
                 },
                 is_time_consuming=False,
                 is_difficult=False,
@@ -386,9 +404,61 @@ class BackpackBattlesGame(Game):
                 is_time_consuming=False,
                 is_difficult=False,
                 weight=2,
-            ),            
+            ),  
+            GameObjectiveTemplate(
+                label="One Trick - Have 5 of the same item in your backpack at once",
+                data=dict(),
+                is_time_consuming=False,
+                is_difficult=True,
+                weight=1,
+            ),    
+            GameObjectiveTemplate(
+                label="Checkmate! - Win a round with a King and a Chess Board in your backpack",
+                data=dict(),
+                is_time_consuming=False,
+                is_difficult=False,
+                weight=1,
+            ),    
+            GameObjectiveTemplate(
+                label="4 of a Kind - With the Deck of Cards, have 4 of the same card active in your backpack at once",
+                data=dict(),
+                is_time_consuming=False,
+                is_difficult=False,
+                weight=1,
+            ),    
+            GameObjectiveTemplate(
+                label="Juggernaut - Reach 1000 maximum health in a round",
+                data=dict(),
+                is_time_consuming=False,
+                is_difficult=False,
+                weight=1,
+            ),    
+            GameObjectiveTemplate(
+                label="Buffed Beyond Belief - In a round, reach HUGERANGE BUFFS",
+                data={
+                    "HUGERANGE": (self.hugerange, 1),
+                    "BUFFS": (self.buffs, 1),
+                },
+                is_time_consuming=False,
+                is_difficult=False,
+                weight=1,
+            ),    
+            GameObjectiveTemplate(
+                label="Affliction Addiction - In a round, inflict HUGERANGE DEBUFFS",
+                data={
+                    "HUGERANGE": (self.hugerange, 1),
+                    "DEBUFFS": (self.debuffs, 1),
+                },
+                is_time_consuming=False,
+                is_difficult=False,
+                weight=1,
+            ),    
         ]   
 
+    @staticmethod
+    def hugerange() -> range:
+        return range(1, 100)
+    
     @staticmethod
     def randomrange() -> range:
         return range(1, 21)
@@ -404,8 +474,31 @@ class BackpackBattlesGame(Game):
             "Reaper",
             "Pyromancer",
             "Berserker",
+            "Adventurer",
+            "Mage",
         ]
 
+    @staticmethod
+    def buffs() -> List[str]:
+        return [
+            "Block",
+            "Regeneration",
+            "Luck",
+            "Spikes",
+            "Vampirism",
+            "Mana",
+            "Heat",
+            "Empower",
+        ]
+
+    @staticmethod
+    def debuffs() -> List[str]:
+        return [
+            "Poison",
+            "Blind",
+            "Cold",
+        ]
+    
     @staticmethod
     def rarity() -> List[str]:
         return [
@@ -414,6 +507,7 @@ class BackpackBattlesGame(Game):
             "Epic",
             "Legendary",
             "Godly",
+            "Unique",
         ]
 
     @staticmethod
@@ -480,6 +574,9 @@ class BackpackBattlesGame(Game):
             "Thornbloom",
             "Stone Golem",
             "Prismatic Sword",
+            "Paradise Birb",
+            "Sir Sand",
+            "Winged Boots"
         ]
 
     @staticmethod
@@ -496,6 +593,8 @@ class BackpackBattlesGame(Game):
             "Fortuna's Hope",
             "Tusk Poker",
             "Lucky Piggy",
+            "Hyper Hedgehog",
+            "Snowmaster",
         ]
         
     @staticmethod
@@ -511,6 +610,8 @@ class BackpackBattlesGame(Game):
             "Strong Demonic Flask",
             "Ruby Chonk",
             "Ice Dragon",
+            "Crow",
+            "Poison Frog"
         ]
         
     @staticmethod
@@ -527,6 +628,7 @@ class BackpackBattlesGame(Game):
             "Dragonscale  Armor",
             "Dragonskin Boots",
             "Dragon Claws",
+            "Spiked Wall",
         ]        
         
     @staticmethod
@@ -542,8 +644,41 @@ class BackpackBattlesGame(Game):
             "Sun Shield",
             "Flame Whip",
             "Obsidian Dragon",
+            "Turbo-Shelly",
         ]        
 
+    @staticmethod
+    def adventurerrecipe() -> List[str]:
+        return [
+            "Jynx Staff",
+            "Broccoli Goobert",
+            "Very Long Spear",
+            "Impractically Large Bloodthorne",
+            "Dragon Knight",
+            "Heart Shield",
+            "Boomerang",
+            "Daggerang",
+            "Hero Shield",
+            "Rope",
+            "Employee Uniform",
+            "Piggy of Riches",
+            "Scissorswords",
+        ]    
+
+    @staticmethod
+    def magerecipe() -> List[str]:
+        return [
+            "Cupcake Staff",
+            "Cupcake Goobert",
+            "Prismatic Wand",
+            "Ice Flower",
+            "Ice Mirror",
+            "Death Lotus",
+            "Devouring Sphere",
+            "Lantern Berry",
+            "Null Blade",
+        ]        
+        
     @staticmethod
     def rainbowgoobert() -> List[str]:
         return [
@@ -551,6 +686,8 @@ class BackpackBattlesGame(Game):
             "Rainbow Goobert Epicglob Uberviscous",
             "Rainbow Goobert Omegaooze Primeslime",
             "Rainbow Goobert MegaSludge Alphapuddle",
+            "Rainbow Goobert Gigabrocolomega",
+            "Rainbow Goobert Omnicolor Sugargoo",
         ]
             
     def anyrecipe(self) -> List[str]:
@@ -559,8 +696,16 @@ class BackpackBattlesGame(Game):
             + self.reaperrecipe()
             + self.berserkerrecipe()
             + self.pyromancerrecipe()
+            + self.adventurerrecipe()
+            + self.magerecipe()
             + self.rainbowgoobert()
             + self.neutralrecipe()
+        )
+
+    def effects(self) -> List[str]:
+        return sorted(
+            self.buffs()
+            + self.debuffs()
         )
 
 
